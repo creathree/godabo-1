@@ -36,7 +36,7 @@ We are building it in the open so others can follow the history (Git tags such a
 
 A participatory service forces hard questions about **identity, rooms, and personal data**. We use this repository to leave **work-in-progress examples**—how we think about zero trust, leak prevention, authentication, and policies—and to **exchange notes** with others.
 
-This is **not** a training course. We are not claiming to teach the “right answer.” We document what creathree is trying, invite feedback and alternatives, and prefer dialogue (Issues / PRs) over lecturing.
+We document what creathree is trying and welcome feedback and alternatives via Issues and PRs.
 
 In brief:
 
