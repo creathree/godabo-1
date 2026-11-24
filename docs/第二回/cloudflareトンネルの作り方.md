@@ -36,7 +36,7 @@ cloudflared --version
 1. `cloudflared tunnel login`
 2. `cloudflared tunnel create godabo`
 3. `cloudflared tunnel route dns godabo dev.example.com`
-4. [`cloudflared/godabo-1.yml`](../../cloudflared/godabo-1.yml) を埋めてリポ外に保存
+4. [`cloudflared/godabo-1.yml`](../../cloudflared/godabo-1.yml) をコピーし `<INPUT_…>` を埋める。**埋め済みファイルはリポ外**（例: `~/.cloudflared/`）に置く
 5. `.env.local` に `CLOUDFLARED_CONFIG` / `CLOUDFLARED_TUNNEL_NAME`
 6. `npm run dev:next` と `npm run dev:tunnel:named`
 

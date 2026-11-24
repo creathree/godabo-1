@@ -1,0 +1,9 @@
+# 雛形（<INPUT_…> のままコミット可）。値を埋めたらリポ外に置き CLOUDFLARED_CONFIG で参照してください。
+
+tunnel: <INPUT_TUNNEL_UUID>
+credentials-file: <INPUT_CREDENTIALS_PATH>
+
+ingress:
+  - hostname: <INPUT_HOSTNAME>
+    service: http://127.0.0.1:3000
+  - service: http_status:404

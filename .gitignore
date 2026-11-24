@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+**/credentials*.json
+.cloudflared/
+package.local.json
+.bracket-i18n-paused
 
 # debug
 npm-debug.log*

@@ -24,12 +24,12 @@ note 第二回の趣旨（ドメイン・Cloudflare Tunnel・React / Next.js / T
 
 | 項目 | 内容 |
 | --- | --- |
-| フレームワーク | Next.js（**Pages Router**） |
+| フレームワーク | Next.js（**App Router**） |
 | スタイル | Tailwind（`create-next-app` 標準構成） |
 | ルーティング | `/` → `/{locale}/home` |
 | 多言語（URL） | `ja` 正本・`ko` のみ（path 方式） |
 | 文言の仕組み | bracket-i18n を導入（UI の `[[…]]` 化は時期を見て可・`i18n:pause` 可） |
-| 水際 | `middleware`（locale 正規化・基本ヘッダー） |
+| 水際 | ルートの `middleware.ts`（locale 大小の正規化・基本セキュリティヘッダー） |
 | 開発時の公開 | Cloudflare Tunnel → [背景](./Cloudflareについて.md)・[手順](./cloudflareトンネルの作り方.md) |
 
 画面は **home で Hello World** まで。
@@ -51,11 +51,12 @@ note 第二回の趣旨（ドメイン・Cloudflare Tunnel・React / Next.js / T
 ## ディレクトリの要点
 
 ```
-src/pages/index.tsx              … `/` → locale 付き home へ
-src/pages/[locale]/home/         … トップ
-src/lib/locale.ts                … 公開 locale
-src/middleware.ts                … 水際
-src/i18n/                        … bracket-i18n
+app/page.tsx                     … `/` → `/{locale}/home` へリダイレクト
+app/[locale]/home/               … トップ
+lib/locale.ts                    … 公開 locale（ja / ko）
+middleware.ts                    … 水際
+i18n/                            … bracket-i18n ランタイム
+public/images/                   … 5W1H 用ビジュアル（配信パスは `/images/...`）
 ```
 
 ---
@@ -90,7 +91,7 @@ npm run dev
 note 第一回で描いた **カードをめくる・一同鑑賞** の世界観は、コードが追いつく前からここに少しずつ溜まっていきます。  
 次の回以降は、この `public/images` を React コンポーネントから参照しながら、ロケール別の見た目やめくり演出へつないんでいきます——**絵はもう届いている。あとは画面に並べる番** です。
 
-木父さん、Hello World ばかり見てないで、リポの `public/images/asset` を開いてみてください。いつ・どこで・誰が……のフォルダ名だけでも、だいぶゴダボらしくなってきます（笑）。
+レビューするときは `public/images/asset` もあわせて見てください。5W1H ごとのフォルダ構成が、これからの UI の骨格になります。
 
 ---
 
