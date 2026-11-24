@@ -1,27 +1,43 @@
 {
-  "name": "godabo-scaffold",
+  "name": "godabo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run dev:next",
+    "dev:next": "next dev -H 127.0.0.1 -p 3000",
+    "dev:tunnel": "cloudflared tunnel --url http://127.0.0.1:3000",
+    "dev:tunnel:named": "cloudflared --config %CLOUDFLARED_CONFIG% tunnel run %CLOUDFLARED_TUNNEL_NAME%",
+    "dev:full": "npm-run-all --parallel dev:next dev:tunnel",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "i18n:scan": "bracket-i18n scan",
+    "i18n:fill": "bracket-i18n fill",
+    "i18n:pending": "bracket-i18n pending",
+    "i18n:pause": "bracket-i18n pause",
+    "i18n:resume": "bracket-i18n resume",
+    "i18n:export": "bracket-i18n export",
+    "i18n:import": "bracket-i18n import"
   },
   "dependencies": {
-    "next": "16.2.9",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "@reduxjs/toolkit": "^2.15.0",
+    "firebase": "^11.10.0",
+    "firebase-admin": "^13.4.0",
+    "next": "16.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-redux": "^9.3.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "babel-plugin-react-compiler": "1.0.0",
+    "bracket-i18n": "^1.7.2",
     "eslint": "^9",
-    "eslint-config-next": "16.2.9",
-    "tailwindcss": "^4",
+    "eslint-config-next": "16.4.6",
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "4.3.3",
     "typescript": "^5"
   }
 }

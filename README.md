@@ -1,40 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# ゴダボーワン（godabo）
 
-## Getting Started
+参加型「5W1Hあそび」のフロント。[note 連載](https://note.com/nana_nezumi/n/nf4c8147368ae) に沿って公開開発しています。
 
-First, run the development server:
+## ドキュメント（日本語）
+
+[docs/README.md](./docs/README.md) に回ごとの一覧があります。
+
+| 回 | 内容 |
+| --- | --- |
+| [第一回](./docs/第一回/README.md) | ゴダボーワンの趣旨（構想まとめ） |
+| [第二回](./docs/第二回/README.md) | リポ土台・[使用する知識](./docs/第二回/使用する知識.md)・[Cloudflare](./docs/第二回/Cloudflareについて.md)・[Tunnel](./docs/第二回/cloudflareトンネルの作り方.md)・[ルールブック](./docs/第二回/ルールブック.md) |
+
+- Next.js（App Router）+ Tailwind
+- 公開 locale: `/ja/...`・`/ko/...`（`app/[locale]/`。Next 組み込み i18n は未使用）
+- 多言語: [bracket-i18n](https://www.npmjs.com/package/bracket-i18n)
+- Firebase / Redux Toolkit: `lib/firebase`・`lib/store`（雛形）
+
+## 開発
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # 127.0.0.1:3000 のみ
+npm run dev:full     # + 即席 Cloudflare Tunnel（設定ファイル不要）
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| コマンド | 用途 |
+| --- | --- |
+| `npm run dev:next` | ローカルのみ |
+| `npm run dev:tunnel` | `cloudflared tunnel --url http://127.0.0.1:3000` |
+| `npm run dev:tunnel:named` | `.env.local` の `CLOUDFLARED_*` で永続トンネル |
+| `npm run i18n:scan` | `[[…]]` をカタログ化（Gemini 不要） |
+| `npm run i18n:fill` | 要 `GEMINI_API_KEY`（後で一括でも可） |
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 公開 Git・env・デプロイ
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+**[第二回 — ルールブック](./docs/第二回/ルールブック.md)** にまとめています（`.gitignore` の意味、コミット前チェック、デプロイ時の秘密の置き場所など）。
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+要約: 秘密は `.env.local` とホスティングの Secret のみ。リポには `.env.example` と雛形だけ。
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+`AGENTS.md` はエージェント向けの短い要約です。
