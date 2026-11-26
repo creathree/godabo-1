@@ -9,7 +9,9 @@
     "dev:tunnel:named": "cloudflared --config %CLOUDFLARED_CONFIG% tunnel run %CLOUDFLARED_TUNNEL_NAME%",
     "dev:full": "npm-run-all --parallel dev:next dev:tunnel",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -H 0.0.0.0",
+    "docker:build": "docker build -t godabo:local .",
+    "docker:run": "docker run --rm -p 8080:8080 -e PORT=8080 godabo:local",
     "lint": "eslint",
     "i18n:scan": "bracket-i18n scan",
     "i18n:fill": "bracket-i18n fill",
@@ -21,9 +23,12 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.15.0",
+    "@upstash/ratelimit": "^2.2.2",
+    "@upstash/redis": "^1.41.1",
     "firebase": "^11.10.0",
     "firebase-admin": "^13.4.0",
     "next": "16.4.6",
+    "qrcode": "^1.5.4",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-redux": "^9.3.1"
@@ -31,6 +36,7 @@
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "bracket-i18n": "^1.7.2",

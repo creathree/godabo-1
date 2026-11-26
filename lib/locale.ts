@@ -12,3 +12,15 @@ export function isLocale(value: string): value is Locale {
 export function getIndexLocale(): Locale {
   return DEFAULT_LOCALE;
 }
+
+/** Accept-Language → 公開 locale（ko のみ拾う。それ以外は ja） */
+export function localeFromAcceptLanguage(
+  header: string | null,
+): Locale {
+  const raw = header ?? "";
+  const first = raw.split(",")[0]?.trim() ?? "";
+  const lang = first.split("-")[0]?.trim().toLowerCase() ?? "";
+  if (lang === "ko" || lang.startsWith("ko")) return "ko";
+  if (isLocale(lang)) return lang;
+  return DEFAULT_LOCALE;
+}

@@ -10,3 +10,5 @@ note の回と `docs/` のフォルダを揃えています。開発元・主旨
 | --- | --- |
 | [第一回](./第一回/README.md) | **ゴダボーワンの趣旨**（[note 構想まとめ](https://note.com/nana_nezumi/n/nf4c8147368ae)の要約） |
 | [第二回](./第二回/README.md) | **リポの土台**・[使用する知識](./第二回/使用する知識.md)・[Cloudflare](./第二回/Cloudflareについて.md)・[トンネル手順](./第二回/cloudflareトンネルの作り方.md)・[ルールブック](./第二回/ルールブック.md) |
+| [第三回](./第三回/README.md) | **Room / WSS**（[typeNo](./第三回/暫定typeNo.md)・[WSS](./第三回/WSSについて.md)・[構文](./第三回/WSS接続の構文.md)・[Worker/DO](./第三回/WorkerとDurableObjects.md)・[HMAC](./第三回/HMACとルーム鍵.md)・[URL](./第三回/URLの設計.md)・チャット完成） |
+| [第四回](./第四回/GCPデプロイ.md) | **GCP Cloud Run** デモ公開・Docker・middleware/CSP |

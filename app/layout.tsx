@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Suspense } from "react";
+import { SiteFooter } from "@/components/SiteFooter";
 import { StoreProvider } from "@/components/StoreProvider";
 import "./globals.css";
 
@@ -27,7 +28,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col">
         <Suspense fallback={null}>
-          <StoreProvider>{children}</StoreProvider>
+          <StoreProvider>
+            <div className="flex min-h-dvh flex-1 flex-col">
+              {children}
+              <SiteFooter />
+            </div>
+          </StoreProvider>
         </Suspense>
       </body>
     </html>

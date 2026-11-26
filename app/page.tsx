@@ -1,8 +1,6 @@
 import { redirect } from "next/navigation";
-import { getIndexLocale } from "@/lib/locale";
 
-/** `/` — locale を決めて Home へ */
+/** `/` → トップ（サブドメイン側で製品名、パスは `/home`） */
 export default function IndexPage() {
-  const locale = getIndexLocale();
-  redirect(`/${locale}/home`);
+  redirect("/home");
 }

@@ -41,7 +41,8 @@ note 第二回の趣旨（ドメイン・Cloudflare Tunnel・React / Next.js / T
 ## 第二回のスコープ外（後の回）
 
 - Google ログイン・Firestore・Room 同期
-- Workers / Durable Objects / R2
+- Worker + DO + WSS（→ [第三回](../第三回/README.md)）
+- R2
 - TTS・めくり演出
 - Redux（[使用する知識](./使用する知識.md)）
 - 本番向けレート制限（Upstash 等）

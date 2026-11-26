@@ -1,0 +1,25 @@
+# 1. npm uninstall wrangler
+# 2.npm install --save-dev wrangler@4
+# npx wrangler deploy
+# wrangler tail
+
+name = "godabo-room"
+main = "src/index.ts"
+compatibility_date = "2025-11-01"
+
+# wrangler secret put GODABO_MASTER_ID
+# 任意: wrangler secret put GODABO_ROOM_HMAC_SECRET  （未設定時は MASTER_ID を HMAC 鍵にする）
+# デモ: WSS は Bearer 不要。荒れたら ENABLE_ROOM_AUTH=true + 検証を足す
+
+[vars]
+ENABLE_ROOM_AUTH = "false"
+# 全ルーム共通。世代を上げると別 DO 群になる（例: apple_1@e2）
+GODABO_ROOM_EPOCH = "1"
+
+[[durable_objects.bindings]]
+name = "ROOM_HUB"
+class_name = "RoomHub"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RoomHub"]
