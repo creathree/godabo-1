@@ -26,6 +26,7 @@ note 第三回に対応します。詳しい背景や図解は **note 本文** �
 | [WorkerとDurableObjects.md](./WorkerとDurableObjects.md) | Worker の Response・DO・**接続数 ≠ ユーザー数** |
 | [HMACとルーム鍵.md](./HMACとルーム鍵.md) | 公開鍵の作り方（HMAC-SHA256） |
 | [URLの設計.md](./URLの設計.md) | 参加 URL・WSS パス・いまの形 |
+| [note下書き.md](./note下書き.md) | **note 第三回** 投稿用下書き |
 
 実装の正本: `workers/godotabo-room/`、`hooks/useRoomWss.ts`、`lib/room/`。
 

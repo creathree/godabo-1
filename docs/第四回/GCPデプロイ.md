@@ -34,6 +34,13 @@ gcloud builds submit --config cloudbuild.yaml `
 2. Cloud Run の実行 SA に `secretAccessor` を付与
 3. `cloudbuild.yaml` の `gcloud run deploy` は `--set-secrets` で上記を **実行時注入**（`npm run build` には入れない）
 
+### Room API（第三回・Worker と同じ鍵）
+
+1. Secret Manager に作成（名前＝変数名）  
+   `GODABO_MASTER_ID` / `GODABO_ROOM_HMAC_SECRET`（Worker `wrangler secret` と同一値）
+2. `GODABO_ROOM_EPOCH=1` は `cloudbuild.yaml` の `--set-env-vars`（秘密ではない）
+3. クライアント用 WSS はビルド時: `cloudbuild.yaml` の `_NEXT_PUBLIC_GODABO_WSS_URL`（または submit の substitutions）
+
 ローカル本番確認: `docker run -e UPSTASH_REDIS_REST_URL=... -e UPSTASH_REDIS_REST_TOKEN=... ...`
 
 ## 3. セキュリティ（実装済み）

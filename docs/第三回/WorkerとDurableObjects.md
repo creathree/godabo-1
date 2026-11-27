@@ -1,6 +1,6 @@
 # Worker と Durable Objects
 
-第三回の **WSS 入口** は Cloudflare **Worker**、**ルームの中身** は **Durable Object（`RoomHub`）** です。note でも「Response の書き方」と「接続数の数え方」を扱います。ここはコードと同じ語彙で整理します。
+第三回の **WSS 入口** は Cloudflare **Worker**、**ルームの中身** は **Durable Object（**`RoomHub`**）** です。note でも「Response の書き方」と「接続数の数え方」を扱います。ここはコードと同じ言葉で整理します。
 
 ---
 
@@ -58,8 +58,8 @@ this.state.acceptWebSocket(server);
 return new Response(null, { status: 101, webSocket: client });
 ```
 
-- **`client`**: ブラウザ側に返るソケット（Response に載せる）
-- **`server`**: DO が `webSocketMessage` で受け取る側
+- `client`: ブラウザ側に返るソケット（Response に載せる）
+- `server`: DO が `webSocketMessage` で受け取る側
 
 `Upgrade` が無い場合は **426** `Expected WebSocket`。
 
