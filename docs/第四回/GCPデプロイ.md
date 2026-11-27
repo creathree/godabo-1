@@ -51,6 +51,12 @@ gcloud builds submit --config cloudbuild.yaml `
 
 本番で Firebase / 外部 API を足したら CSP を更新します。
 
-## 4. 今後の秘密
+## 4. 秘密の範囲（KMS ではない）
 
-`.env.local` や Cloud Run の **Secrets** は第三回ルールのとおり。現時点でデプロイ本線の秘密は Upstash の 2 つのみ。
+本文暗号用の **Cloud KMS は使いません**（個人情報なし・チャットは平文 JSON）。Cloud Run が参照するのは主に次のとおりです。
+
+- **Upstash** … `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`
+- **Room API** … `GODABO_MASTER_ID` / `GODABO_ROOM_HMAC_SECRET`（第三回・Worker と同値）
+- **公開側** … `NEXT_PUBLIC_*`（ビルド時、`cloudbuild.yaml` の substitutions）
+
+手元は `.env.local` / Secret Manager。Git に値は載せません（第二回ルールブック）。
